@@ -1,22 +1,31 @@
-//public class BlackjackApp {
-//
-//    private static BlackjackGame game;
-//
-//    public static void main(String[] args) {
-//        System.out.println("BLACKJACK!");
-//        System.out.println("Blackjack payout is 3:2");
-//        System.out.println();
-//
-//        String playAgain = "y";
+import java.util.Scanner;
+
+public class BlackjackApp {
+
+    private static BlackjackGame game;
+
+    public static void main(String[] args) {
+        System.out.println("BLACKJACK!");
+        System.out.println("Blackjack payout is 3:2");
+        System.out.println();
+        game = new BlackjackGame();
+
+        showHands();
+        String playAgain = "y";
 //        while(playAgain.equalsIgnoreCase("y")) {
 //            // votre scenario de simulation vient ici
 //
-//        }
-//        System.out.println("\nBye!");
-//    }
+//            showHands();
 //
-//	// affiche le message Out of money! Would you like to add more? (y/n):. Si le joueur tappe y alors la fonction reset la balance du joueur au 100 et retourne true. False Sinon.
+//        }
+        System.out.println("\nBye!");
+    }
+
+
+	// affiche le message Out of money! Would you like to add more? (y/n):. Si le joueur tappe y alors la fonction reset la balance du joueur au 100 et retourne true. False Sinon.
 //    private static boolean buyMoreChips() {
+//        Scanner sc = new Scanner(System.in);
+//
 //    }
 //
 //	// affiche le message Bet amount, lire la valeur de la mise saisi par le joueur. Valide cette valeur. Si la valeur n'est pas valide afficher le message Bet must be between
@@ -28,8 +37,11 @@
 //    }
 //
 //	// affiche les cartes dans la main du courtier et les cartes dans la main du joueur
-//	    private static void showHands() {
-//    }
+	    private static void showHands() {
+
+        game.deal();
+        }
+    }
 //
 //	// affiche le message DEALER'S SHOW CARD et puis affiche le deuxieme carte dans la main du courtier
 //    private static void showDealerShowCard() {

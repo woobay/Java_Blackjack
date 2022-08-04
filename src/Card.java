@@ -21,8 +21,11 @@ public class Card {
         return points;
     }
 
-//    public Card(Card c) {
-//    }
+    public Card(Card c) {
+        this.suite = c.suite;
+        this.rank = c.rank;
+        this.points = c.points;
+    }
 
     
 	//qui retourne true si la carte est un Ace 

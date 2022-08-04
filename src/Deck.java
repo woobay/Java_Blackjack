@@ -12,20 +12,21 @@ public class Deck {
         String[] suits = {"Diamonds", "Clubs", "Hearts", "Spades"};
 
         deck = new Card[52];
-        currentCardIndex = 0;
+
 
         for (int suit = 0; suit < 4; suit++) {
             for (int faceNum = 0; faceNum < 13; faceNum++){
                 deck[(faceNum + (suit * 13))] = new Card(suits[suit], faces[faceNum],faceNum+2);
             }
         }
+        shuffleDeck();
     }
 
-    public void displayDeck(){
-        for (Card card: deck){
-            System.out.println(card.display());
-        }
-    }
+//    public void displayDeck(){
+//        for (Card card: deck){
+//            System.out.println(card.display());
+//        }
+//    }
 
 
 
@@ -41,9 +42,6 @@ public class Deck {
             deck[first] = deck[second];
             deck[second] = temp;
         }
-
-
-
     }
     
     public Card drawCard() {

@@ -1,25 +1,33 @@
-//public class BlackjackGame {
-//    private final Hand playerHand;
-//    private final Hand dealerHand;
-//    private final Deck deck;
-//    private double betAmount;
-//    private final double minBet;
-//    private final double maxBet;
-//    private double totalMoney;
-//
-//	//Initialiser deck, playerHand, dealerHand, minBet et maxBet
-//	//le minimum et le maximum de la mise sont de 5 et 1000 respectivement.
-//    public BlackjackGame() {
-//    }
-//
-//    public void loadMoney() {
-//        totalMoney = 100;
-//    }
-//
-//	//retourne true le total d’argent dont un joueur dispose est inférieur au minimum de mise. False sinon.
+public class BlackjackGame {
+    private final Hand playerHand;
+    private final Hand dealerHand;
+    private final Deck deck;
+    private double betAmount;
+    private final double minBet;
+    private final double maxBet;
+    private double totalMoney;
+
+	//Initialiser deck, playerHand, dealerHand, minBet et maxBet
+	//le minimum et le maximum de la mise sont de 5 et 1000 respectivement.
+    public BlackjackGame() {
+        deck = new Deck();
+        playerHand = new Hand("Gab");
+        dealerHand = new Hand("Dealer");
+        minBet = 5;
+        maxBet = 1000;
+
+
+
+    }
+
+    public void loadMoney() {
+        totalMoney = 100;
+    }
+
+	//retourne true le total d’argent dont un joueur dispose est inférieur au minimum de mise. False sinon.
 //    public boolean isOutOfMoney() {
 //    }
-//
+
 //	// pour initialiser totalMoney a 100
 //    public void resetMoney() {
 //    }
@@ -43,10 +51,19 @@
 //	//pour intialiser le montant de la mise qu'on va le faire
 //    public void setBet(double amt) {
 //    }
-//
-//	// distribue deux cartes pour le joueur (playerHand) et deux cartes pour le courtier (dealerHand).
-//    public void deal() {
-//    }
+
+	// distribue deux cartes pour le joueur (playerHand) et deux cartes pour le courtier (dealerHand).
+    public void deal() {
+            Card cardDeal = deck.drawCard();
+            playerHand.addCard(cardDeal);
+            Card card2 = deck.drawCard();
+            playerHand.addCard(card2);
+
+            Card[] yas = playerHand.getHand();
+            for (Card x : yas) {
+                System.out.println(x.display());
+            }
+    }
 //
 //	//pour distribuer une carte en plus pour le joueur dans le cas où il fait hit.
 //    public void hit() {
@@ -66,7 +83,7 @@
 //
 //	//retourne playerHand
 //    public Hand getPlayerHand() {
-//
+//        return playerHand.
 //    }
 //
 //	// ice cream
@@ -99,5 +116,5 @@
 //	// soustraire le montant du bet perdu du montant total
 //    public void subtractBetFromTotal() {
 //    }
-//
-//}
+
+}
