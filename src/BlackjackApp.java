@@ -21,6 +21,7 @@ public class BlackjackApp {
     
 	// affiche le message Bet amount, lire la valeur de la mise saisi par le joueur. Valide cette valeur. Si la valeur n'est pas valide afficher le message Bet must be between
     private static void getBetAmount() {
+        game.setBet(Console.getDouble("Enter bet amount: ", game.getMinBet(), game.getMaxBet()));
      }
     
 	// Affiche le message Hit or Stand? (h/s): et puis retourne ce que le joueur a tappe. 
@@ -37,14 +38,23 @@ public class BlackjackApp {
     
 	// affiche le message DEALER'S CARDS et puis affiche les cartes dans la main du courtier
     private static void showDealerHand() {
+        Card[] cards = game.getDealerHand().getCards();
+        for (Card card: cards) {
+            System.out.println(card.display());
+        }
     }
     
 	// affiche le message YOUR CARDS et puis affiche les cartes dans la main du joueur
     private static void showPlayerHand() {
+        Card[] cards = game.getPlayerHand().getCards();
+        for (Card card: cards) {
+            System.out.println(card.display());
+        }
     }
     
 	// affiche Total money:  et le montant total
     private static void showMoney() {
+        game.loadMoney();
     }
     
 

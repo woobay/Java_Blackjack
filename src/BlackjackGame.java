@@ -10,10 +10,21 @@ public class BlackjackGame {
 	//Initialiser deck, playerHand, dealerHand, minBet et maxBet
 	//le minimum et le maximum de la mise sont de 5 et 1000 respectivement.
     public BlackjackGame() {
+        deck = new Deck();
+        playerHand = new Hand("Gab");
+        dealerHand = new Hand("Dealer");
+        minBet = 5;
+        maxBet = 1000;
+
+//        Frank a un reset money ici aussi -----------------------------
+        resetMoney();
     } 
     
     public void loadMoney() {
+//        weird code a frank ------------------ deja fait la
         totalMoney = 100;
+        System.out.printf("Total money: %s",totalMoney);
+        System.out.println();
     } 
     
 	//retourne true le total d’argent dont un joueur dispose est inférieur au minimum de mise. False sinon.
@@ -29,11 +40,13 @@ public class BlackjackGame {
     }
     
 	//retourner minBet
-    public double getMinBet() {  
+    public double getMinBet() {
+        return minBet;
     }
     
 	//retourner le montant total que le joeur peut l'utiliser pour la mise.
     public double getMaxBet() {
+        return maxBet;
     }
     
 	// pour retrouner le montant total
@@ -41,15 +54,21 @@ public class BlackjackGame {
     }
     
 	//pour intialiser le montant de la mise qu'on va le faire
-    public void setBet(double amt) {   
+    public void setBet(double amt) {
+        this.betAmount = amt;
     }
     
 	// distribue deux cartes pour le joueur (playerHand) et deux cartes pour le courtier (dealerHand).
     public void deal() {
+        for(int x = 0; x < 2; x++) {
+            playerHand.addCard(deck.drawCard());
+            dealerHand.addCard(deck.drawCard());
+        }
     }
     
 	//pour distribuer une carte en plus pour le joueur dans le cas où il fait hit.
     public void hit() {
+        playerHand.addCard(deck.drawCard());
     }
     
 	//qui ajoute des cartes au main du courtier tant que la somme des points dont il dispose est moins que 17.
@@ -62,10 +81,12 @@ public class BlackjackGame {
     
 	//retourne dealerHand
     public Hand getDealerHand() {
+        return dealerHand;
     }
 
 	//retourne playerHand
     public Hand getPlayerHand() {
+        return playerHand;
 
     }
     
