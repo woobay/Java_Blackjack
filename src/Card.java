@@ -16,18 +16,15 @@ public class Card {
     }
     
     public String getSuite() {
-//        This suite ou suitee ------------------------
-        return suite;
+        return this.suite;
     }
     
     public String getRank() {
-//        this rank ou rank ---------------------------
-        return rank;
+        return this.rank;
     }
     
     public int getPoints() {
-//        this.point ou point ---------------------
-        return points;
+        return this.points;
     }
     
 	//qui retourne true si la carte est un Ace 

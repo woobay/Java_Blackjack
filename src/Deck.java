@@ -11,12 +11,10 @@ public class Deck {
 
         deck = new Card[52];
         for (int suit = 0; suit < 4; suit++) {
-
             int pointValue = 2;
-
             for (int faceNum = 0; faceNum < 13; faceNum++){
                 deck[(faceNum + (suit * 13))] = new Card(suits[suit], faces[faceNum],pointValue);
-
+//TODO si on a le temps optmiser
                 if(faceNum >7 && faceNum < 11){
                     pointValue = 10;
                 }else{pointValue++;}
@@ -30,7 +28,6 @@ public class Deck {
     private void shuffleDeck() {
         SecureRandom randomNumber = new SecureRandom();
         for (int first = 0; first < deck.length; first++){
-
             int second = randomNumber.nextInt(52);
             Card temp = deck[first];
             deck[first] = deck[second];
@@ -48,5 +45,4 @@ public class Deck {
             return deck[currentCardIndex++];        
         }
     }
-
 }

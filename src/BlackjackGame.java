@@ -15,13 +15,10 @@ public class BlackjackGame {
         dealerHand = new Hand("Dealer");
         minBet = 5;
         maxBet = 1000;
-
-//        Frank a un reset money ici aussi -----------------------------
-        resetMoney();
+        loadMoney();
     } 
     
     public void loadMoney() {
-//        weird code a frank ------------------ deja fait la
         totalMoney = 100;
         System.out.printf("Total money: %s",totalMoney);
         System.out.println();
@@ -29,14 +26,25 @@ public class BlackjackGame {
     
 	//retourne true le total d’argent dont un joueur dispose est inférieur au minimum de mise. False sinon.
     public boolean isOutOfMoney() {
+        if (totalMoney < minBet) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 	// pour initialiser totalMoney a 100
     public void resetMoney() {
+        loadMoney();
     }
     
 	//retourne false si double localBetAmt est inférieur au minBet ou supérieur au maxBet ou supérieur au totalMoney. True sinon.
     public boolean isValidBet(double localBetAmt) {
+        if (localBetAmt < minBet || localBetAmt > maxBet) {
+            return false;
+        } else {
+            return true;
+        }
     }
     
 	//retourner minBet
@@ -50,7 +58,8 @@ public class BlackjackGame {
     }
     
 	// pour retrouner le montant total
-    public double getTotalMoney() {    
+    public double getTotalMoney() {
+        return totalMoney;
     }
     
 	//pour intialiser le montant de la mise qu'on va le faire
@@ -73,10 +82,14 @@ public class BlackjackGame {
     
 	//qui ajoute des cartes au main du courtier tant que la somme des points dont il dispose est moins que 17.
     public void stand() {
+        while (dealerHand.getPoints() < 17) {
+            dealerHand.addCard(deck.drawCard());
+        }
     }
     
 	//retourne le deuxième carte dans la main du courtier.
     public Card getDealerShowCard() {
+        return dealerHand.getCards()[1];
      }
     
 	//retourne dealerHand
@@ -102,23 +115,40 @@ public class BlackjackGame {
     
 	//retourne true si les points dans la main de joueur est inférieur ou égale 21 et ces points sont égales aux points avec le courtier. False sinon.
     public boolean isPush() {
+        if (playerHand.getPoints() <= 21 && playerHand.getPoints() == dealerHand.getPoints()) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
 	
 	//retourne true si le player gagne. False sinon.
+
     public boolean playerWins() {
+        if (playerHand.getPoints() > dealerHand.getPoints()) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
 	// ajoute le montant du mise gagner au montant total
     public void addBetToTotal() {
+        if (playerWins()) {
+            totalMoney += betAmount;
+        }
     }
     
 	// ajoute le montant de mise gagner selon 3:2 au montant total dans le cas de blackjack
     public void addBlackjackToTotal() {
+        if (playerHand.isBlackjack()) {
+            totalMoney += 1.5 * betAmount;
+        }
     }
     
 	// soustraire le montant du bet perdu du montant total
     public void subtractBetFromTotal() {
+        totalMoney -= betAmount;
     }
-
 }

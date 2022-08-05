@@ -16,45 +16,50 @@ public class Hand {
     }
     
 	// retourne la somme des cartes dans le tableau hand. Si la somme est >21, il faut recompter les cartes pour verifier si il y a un ACE. Si oui on le considere comme 1, sinon on ajoute la somme des points
+
+//    TODO Pourrais regarder d'enlever une loop peut-etre
     public int getPoints() {
         int sum = 0;
-        for (Card x : hand) {
-            System.out.println(x.getPoints());
-            sum += x.getPoints();
+        for (Card item : hand) {
+            sum += item.getPoints();
+        }
+        if ( sum > 21) {
+            for (Card item: hand) {
+                if (item.isAce()) {
+                    sum -= 10;
+                }
+            }
         }
         return sum;
-
-
-//         ou ------------------
-
-
-        int totalHand = 0;
-        for(int i = 0 ; i < hand.length ; i++){
-            totalHand += hand[i].getPoints();
-        }
-        if(totalHand > 21){
-
-            return 3;
-        }else{
-            return totalHand;
-        }
     }
 
 
     
 	// ajouter une carte au tableau
     public void addCard(Card card) {
+//      hand[i++] = new Card(card)
         hand[i++] = card;
     }
     
 	//retourne true si la somme de deux cartes est égale à 21. False sinon
     public boolean isBlackjack() {
-
+        int sum = 0;
+        for (Card card: hand){
+            sum += card.getPoints();
+        }
+        if (sum == 21) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
 	// retourne true si la somme des points a une valeur supérieur a 21. False sinon.
     public boolean isBust() {
-
+        if (getPoints() > 21) {
+            return true;
+        } else {
+            return false;
+        }
     }
-
 }
