@@ -6,11 +6,39 @@ public class BlackjackApp {
         System.out.println("BLACKJACK!");
         System.out.println("Blackjack payout is 3:2");
         System.out.println();
+        game = new BlackjackGame();
 
         String playAgain = "y";
         while(playAgain.equalsIgnoreCase("y")) {
             // votre scenario de simulation vient ici
+            System.out.println();
+            getBetAmount();
+            game.deal();
+            System.out.println("\nDealer show Card");
+            System.out.println(game.getDealerShowCard().display()+ "\n");
+            showPlayerHand();
 
+            while (getHitOrStand().equals("h")) {
+                game.hit();
+            }
+            game.stand();
+            showHands();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            String[] answers = {"y", "n"};
+            playAgain = Console.getString("Do you want to play again? (y/n): ",answers);
         }
         System.out.println("\nBye!");
     }
@@ -84,6 +112,7 @@ public class BlackjackApp {
         for (Card card: cards) {
             System.out.println(card.display());
         }
+        System.out.println();
     }
 
 	// affiche Total money:  et le montant total
@@ -98,7 +127,6 @@ public class BlackjackApp {
 
         showDealerHand();
         System.out.printf("DEALER'S POINTS: %d%n%n", game.getDealerHand().getPoints());
-
         if(game.isPush()) {
             System.out.println("Push!");
         } else if(game.getPlayerHand().isBlackjack()) {

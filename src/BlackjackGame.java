@@ -16,6 +16,7 @@ public class BlackjackGame {
         minBet = 5;
         maxBet = 1000;
         loadMoney();
+
     } 
     
     public void loadMoney() {

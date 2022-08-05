@@ -7,7 +7,7 @@ public class Hand {
     public Hand(String user) {
 //        Trouver fixx pour empty array -------------------
         this.user = user;
-        hand = new Card[52];
+        hand = new Card[2];
     }
     
 	//retroune le tableau hand
