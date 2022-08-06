@@ -6,11 +6,13 @@ public class BlackjackApp {
         System.out.println("BLACKJACK!");
         System.out.println("Blackjack payout is 3:2");
         System.out.println();
-        game = new BlackjackGame();
+
+
 
         String playAgain = "y";
         while(playAgain.equalsIgnoreCase("y")) {
             // votre scenario de simulation vient ici
+            game = new BlackjackGame();
             System.out.println();
             getBetAmount();
             game.deal();
@@ -18,20 +20,20 @@ public class BlackjackApp {
             System.out.println(game.getDealerShowCard().display()+ "\n");
             showPlayerHand();
 
-            while (getHitOrStand().equals("h")) {
-                game.hit();
+            if (game.getPlayerHand().isBlackjack()){
+
+                showWinner();
+            } else {
+                while (getHitOrStand().equals("h")) {
+                    game.hit();
+                    showPlayerHand();
+                    if (game.getPlayerHand().isBust()) {
+                        break;
+                    }
+                }
+                game.stand();
+                showWinner();
             }
-            game.stand();
-            showHands();
-
-
-
-
-
-
-
-
-
 
 
 
@@ -39,6 +41,7 @@ public class BlackjackApp {
 
             String[] answers = {"y", "n"};
             playAgain = Console.getString("Do you want to play again? (y/n): ",answers);
+
         }
         System.out.println("\nBye!");
     }
@@ -70,8 +73,8 @@ public class BlackjackApp {
 
 	// affiche les cartes dans la main du courtier et les cartes dans la main du joueur
 	    private static void showHands() {
-            Card[] cardsDealer = game.getDealerHand().getCards();
-            Card[] cardsPlayer = game.getPlayerHand().getCards();
+            Card[] cardsDealer = game.getDealerHand().getCards().toArray(new Card[0]);
+            Card[] cardsPlayer = game.getPlayerHand().getCards().toArray(new Card[0]);
 
             System.out.println("Player hand: ");
             for(Card card: cardsPlayer) {
@@ -99,7 +102,7 @@ public class BlackjackApp {
 	// affiche le message DEALER'S CARDS et puis affiche les cartes dans la main du courtier
     private static void showDealerHand() {
         System.out.println("Dealer's cards: ");
-        Card[] cards = game.getDealerHand().getCards();
+        Card[] cards = game.getDealerHand().getCards().toArray(new Card[0]);
         for (Card card: cards) {
             System.out.println(card.display());
         }
@@ -108,7 +111,7 @@ public class BlackjackApp {
 	// affiche le message YOUR CARDS et puis affiche les cartes dans la main du joueur
     private static void showPlayerHand() {
         System.out.println("Your cards: ");
-        Card[] cards = game.getPlayerHand().getCards();
+        Card[] cards = game.getPlayerHand().getCards().toArray(new Card[0]);
         for (Card card: cards) {
             System.out.println(card.display());
         }

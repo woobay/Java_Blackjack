@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 
 public class Hand {
-    private Card [] hand;
+    private ArrayList<Card> hand;
     private String user; //Soit le le joueur soit le courtier. Selon comment on appelle le constrcuteur et le paramertre quand utilise
     private int i = 0;
     public Hand(String user) {
 //        Trouver fixx pour empty array -------------------
         this.user = user;
-        hand = new Card[2];
+        hand = new ArrayList<>();
     }
     
 	//retroune le tableau hand
-    public Card[] getCards() {
+    public ArrayList<Card> getCards() {
         return this.hand;
     }
     
@@ -38,7 +38,7 @@ public class Hand {
 	// ajouter une carte au tableau
     public void addCard(Card card) {
 //      hand[i++] = new Card(card)
-        hand[i++] = card;
+        hand.add(card);
     }
     
 	//retourne true si la somme de deux cartes est égale à 21. False sinon

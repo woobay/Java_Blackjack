@@ -16,7 +16,6 @@ public class BlackjackGame {
         minBet = 5;
         maxBet = 1000;
         loadMoney();
-
     } 
     
     public void loadMoney() {
@@ -74,6 +73,7 @@ public class BlackjackGame {
             playerHand.addCard(deck.drawCard());
             dealerHand.addCard(deck.drawCard());
         }
+
     }
     
 	//pour distribuer une carte en plus pour le joueur dans le cas où il fait hit.
@@ -90,7 +90,7 @@ public class BlackjackGame {
     
 	//retourne le deuxième carte dans la main du courtier.
     public Card getDealerShowCard() {
-        return dealerHand.getCards()[1];
+        return dealerHand.getCards().get(1);
      }
     
 	//retourne dealerHand
@@ -116,40 +116,49 @@ public class BlackjackGame {
     
 	//retourne true si les points dans la main de joueur est inférieur ou égale 21 et ces points sont égales aux points avec le courtier. False sinon.
     public boolean isPush() {
-        if (playerHand.getPoints() <= 21 && playerHand.getPoints() == dealerHand.getPoints()) {
+        if ((playerHand.getPoints() <= 21 && playerHand.getPoints() == dealerHand.getPoints()) || (playerHand.isBust() && dealerHand.isBust())) {
+            System.out.println("Total money: " + totalMoney);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
+
+
     
 	
 	//retourne true si le player gagne. False sinon.
 
     public boolean playerWins() {
-        if (playerHand.getPoints() > dealerHand.getPoints()) {
+        if (!playerHand.isBust() && playerHand.getPoints() > dealerHand.getPoints()) {
+            if (playerHand.isBlackjack()) {
+                addBlackjackToTotal();
+                return true;
+            }
+            addBetToTotal();
             return true;
-        } else {
-            return false;
+
         }
+        subtractBetFromTotal();
+        return false;
     }
     
 	// ajoute le montant du mise gagner au montant total
     public void addBetToTotal() {
-        if (playerWins()) {
-            totalMoney += betAmount;
-        }
+        totalMoney += betAmount;
+        System.out.println("Total money: " + totalMoney);
     }
     
 	// ajoute le montant de mise gagner selon 3:2 au montant total dans le cas de blackjack
     public void addBlackjackToTotal() {
-        if (playerHand.isBlackjack()) {
-            totalMoney += 1.5 * betAmount;
-        }
+        totalMoney += 1.5 * betAmount;
+        System.out.println("Total money: " + totalMoney);
     }
     
 	// soustraire le montant du bet perdu du montant total
     public void subtractBetFromTotal() {
         totalMoney -= betAmount;
+        System.out.println("Total money: " + totalMoney);
     }
 }
+
+
