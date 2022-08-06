@@ -48,6 +48,9 @@ public class Hand {
         }
         int sum = 0;
         for (Card card: hand){
+            if(card.getRank() == "10"){
+                break;
+            }
             sum += card.getPoints();
         }
         if (sum == 21) {

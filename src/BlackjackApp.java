@@ -20,7 +20,6 @@ public class BlackjackApp {
             showPlayerHand();
 
             if (game.getPlayerHand().isBlackjack()){
-
                 showWinner();
             } else {
                 while (getHitOrStand().equals("h")) {

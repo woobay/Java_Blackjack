@@ -121,7 +121,9 @@ public class BlackjackGame {
     
 	//retourne true si les points dans la main de joueur est inférieur ou égale 21 et ces points sont égales aux points avec le courtier. False sinon.
     public boolean isPush() {
-        return  ((playerHand.getPoints() <= 21 && playerHand.getPoints() == dealerHand.getPoints()) || (playerHand.isBust() && dealerHand.isBust()));
+        return  ((playerHand.getPoints() == dealerHand.getPoints())
+                || (playerHand.isBust() && dealerHand.isBust()))
+                || (playerHand.isBlackjack() && dealerHand.isBlackjack());
     }
 
 	//retourne true si le player gagne. False sinon.
