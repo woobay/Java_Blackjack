@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 
 public class Hand {
-    private Card [] hand;
+    private ArrayList<Card> hand;
     private String user; //Soit le le joueur soit le courtier. Selon comment on appelle le constrcuteur et le paramertre quand utilise
-    private int i = 0;
+
     public Hand(String user) {
 //        Trouver fixx pour empty array -------------------
         this.user = user;
-        hand = new Card[2];
+        hand = new ArrayList<>();
     }
     
 	//retroune le tableau hand
-    public Card[] getCards() {
+    public ArrayList<Card> getCards() {
         return this.hand;
     }
     
@@ -32,34 +32,32 @@ public class Hand {
         }
         return sum;
     }
-
-
-    
 	// ajouter une carte au tableau
     public void addCard(Card card) {
 //      hand[i++] = new Card(card)
-        hand[i++] = card;
+        hand.add(card);
     }
     
 	//retourne true si la somme de deux cartes est égale à 21. False sinon
     public boolean isBlackjack() {
+        if(hand.size() > 2){
+            return false;
+        }
         int sum = 0;
         for (Card card: hand){
+            if(card.getRank() == "10"){
+                break;
+            }
             sum += card.getPoints();
         }
         if (sum == 21) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
     
 	// retourne true si la somme des points a une valeur supérieur a 21. False sinon.
     public boolean isBust() {
-        if (getPoints() > 21) {
-            return true;
-        } else {
-            return false;
-        }
+        return  (getPoints() > 21) ;
     }
 }

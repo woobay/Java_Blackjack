@@ -29,10 +29,7 @@ public class Card {
     
 	//qui retourne true si la carte est un Ace 
     public boolean isAce() {
-        if (this.rank == "Ace") {
-            return true;
-        };
-        return false;
+        return (this.rank == "Ace");
     }
     
 	//retourne une chaine de caractère : Valeur_rank_variable + " of " + valeur_suite_variable. Par exemple : 3 of Hearts 

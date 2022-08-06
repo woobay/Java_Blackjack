@@ -13,6 +13,7 @@ public class Console {
     public static String getString(String prompt, String[] allowedValues) {
         while (true) {
             // get value from user
+            System.out.println();
             System.out.print(prompt);
             String value = sc.nextLine();
             
