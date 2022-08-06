@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Hand {
     private ArrayList<Card> hand;
     private String user; //Soit le le joueur soit le courtier. Selon comment on appelle le constrcuteur et le paramertre quand utilise
-    private int i = 0;
+
     public Hand(String user) {
 //        Trouver fixx pour empty array -------------------
         this.user = user;
@@ -43,15 +43,17 @@ public class Hand {
     
 	//retourne true si la somme de deux cartes est égale à 21. False sinon
     public boolean isBlackjack() {
+        if(hand.size() > 2){
+            return false;
+        }
         int sum = 0;
         for (Card card: hand){
             sum += card.getPoints();
         }
         if (sum == 21) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
     
 	// retourne true si la somme des points a une valeur supérieur a 21. False sinon.

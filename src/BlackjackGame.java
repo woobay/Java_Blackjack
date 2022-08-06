@@ -26,11 +26,10 @@ public class BlackjackGame {
     
 	//retourne true le total d’argent dont un joueur dispose est inférieur au minimum de mise. False sinon.
     public boolean isOutOfMoney() {
-        if (totalMoney < minBet) {
+        if(totalMoney < 5){
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
 	// pour initialiser totalMoney a 100
@@ -54,6 +53,10 @@ public class BlackjackGame {
     
 	//retourner le montant total que le joeur peut l'utiliser pour la mise.
     public double getMaxBet() {
+        //TODO devrais etre de meme
+        //if(totalMoney < 1000){
+        //    return maxBet = totalMoney;
+        //}
         return maxBet;
     }
     
@@ -69,6 +72,8 @@ public class BlackjackGame {
     
 	// distribue deux cartes pour le joueur (playerHand) et deux cartes pour le courtier (dealerHand).
     public void deal() {
+        playerHand.getCards().clear();
+        dealerHand.getCards().clear();
         for(int x = 0; x < 2; x++) {
             playerHand.addCard(deck.drawCard());
             dealerHand.addCard(deck.drawCard());
@@ -90,6 +95,7 @@ public class BlackjackGame {
     
 	//retourne le deuxième carte dans la main du courtier.
     public Card getDealerShowCard() {
+        System.out.println("\nDealer show Card");
         return dealerHand.getCards().get(1);
      }
     
@@ -101,7 +107,6 @@ public class BlackjackGame {
 	//retourne playerHand
     public Hand getPlayerHand() {
         return playerHand;
-
     }
     
 	// ice cream
@@ -116,48 +121,26 @@ public class BlackjackGame {
     
 	//retourne true si les points dans la main de joueur est inférieur ou égale 21 et ces points sont égales aux points avec le courtier. False sinon.
     public boolean isPush() {
-        if ((playerHand.getPoints() <= 21 && playerHand.getPoints() == dealerHand.getPoints()) || (playerHand.isBust() && dealerHand.isBust())) {
-            System.out.println("Total money: " + totalMoney);
-            return true;
-        }
-        return false;
+        return  ((playerHand.getPoints() <= 21 && playerHand.getPoints() == dealerHand.getPoints()) || (playerHand.isBust() && dealerHand.isBust()));
     }
 
-
-    
-	
 	//retourne true si le player gagne. False sinon.
-
     public boolean playerWins() {
-        if (!playerHand.isBust() && playerHand.getPoints() > dealerHand.getPoints()) {
-            if (playerHand.isBlackjack()) {
-                addBlackjackToTotal();
-                return true;
-            }
-            addBetToTotal();
-            return true;
-
-        }
-        subtractBetFromTotal();
-        return false;
+        return  ((!playerHand.isBust() && dealerHand.isBust())) || (!playerHand.isBust() && playerHand.getPoints() > dealerHand.getPoints());
     }
-    
 	// ajoute le montant du mise gagner au montant total
     public void addBetToTotal() {
         totalMoney += betAmount;
-        System.out.println("Total money: " + totalMoney);
     }
     
 	// ajoute le montant de mise gagner selon 3:2 au montant total dans le cas de blackjack
     public void addBlackjackToTotal() {
         totalMoney += 1.5 * betAmount;
-        System.out.println("Total money: " + totalMoney);
     }
     
 	// soustraire le montant du bet perdu du montant total
     public void subtractBetFromTotal() {
         totalMoney -= betAmount;
-        System.out.println("Total money: " + totalMoney);
     }
 }
 
