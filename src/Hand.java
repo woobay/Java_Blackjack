@@ -32,9 +32,6 @@ public class Hand {
         }
         return sum;
     }
-
-
-    
 	// ajouter une carte au tableau
     public void addCard(Card card) {
 //      hand[i++] = new Card(card)
@@ -61,10 +58,6 @@ public class Hand {
     
 	// retourne true si la somme des points a une valeur supérieur a 21. False sinon.
     public boolean isBust() {
-        if (getPoints() > 21) {
-            return true;
-        } else {
-            return false;
-        }
+        return  (getPoints() > 21) ;
     }
 }

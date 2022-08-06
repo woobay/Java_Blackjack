@@ -115,8 +115,6 @@ public class BlackjackApp {
         System.out.println();
 
     }
-
-
     private static void showWinner() {
         System.out.println();
         showPlayerHand();

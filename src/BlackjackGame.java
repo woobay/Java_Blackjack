@@ -26,12 +26,8 @@ public class BlackjackGame {
     
 	//retourne true le total d’argent dont un joueur dispose est inférieur au minimum de mise. False sinon.
     public boolean isOutOfMoney() {
-        if(totalMoney < 5){
-            return true;
-        }
-        return false;
+        return (totalMoney < 5);
     }
-
 	// pour initialiser totalMoney a 100
     public void resetMoney() {
         loadMoney();
@@ -54,9 +50,9 @@ public class BlackjackGame {
 	//retourner le montant total que le joeur peut l'utiliser pour la mise.
     public double getMaxBet() {
         //TODO devrais etre de meme
-        //if(totalMoney < 1000){
-        //    return maxBet = totalMoney;
-        //}
+        if(totalMoney < maxBet){
+            return totalMoney;
+        }
         return maxBet;
     }
     
