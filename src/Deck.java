@@ -10,14 +10,15 @@ public class Deck {
         String[] suits = {"Diamonds", "Clubs", "Hearts", "Spades"};
 
         deck = new Card[52];
-        for (int suit = 0; suit < 4; suit++) {
-            int pointValue = 2;
-            for (int faceNum = 0; faceNum < 13; faceNum++){
-                deck[(faceNum + (suit * 13))] = new Card(suits[suit], faces[faceNum],pointValue);
-//TODO si on a le temps optmiser
-                if(faceNum >7 && faceNum < 11){
+        for (int suit = 0; suit < suits.length; suit++) {
+            int pointValue = 1;
+            for (int faceNum = 0; faceNum < faces.length; faceNum++){
+
+                if(faces[faceNum] == "Jack" || faces[faceNum] == "Queen" || faces[faceNum] == "King"){
                     pointValue = 10;
                 }else{pointValue++;}
+
+                deck[(faceNum + (suit * 13))] = new Card(suits[suit], faces[faceNum],pointValue);
             }
         }
         shuffleDeck();

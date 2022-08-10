@@ -19,7 +19,8 @@ public class BlackjackApp {
             showDealerShowCard();
             showPlayerHand();
 
-            if (game.getPlayerHand().isBlackjack()){
+            if (game.getPlayerHand().isBlackjack() || game.getDealerHand().isBlackjack()){
+                System.out.println(game.getDealerHand());
                 showWinner();
             } else {
                 while (getHitOrStand().equals("h")) {
