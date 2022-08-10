@@ -9,15 +9,9 @@ public class Hand {
         this.user = user;
         hand = new ArrayList<>();
     }
-<<<<<<< HEAD
 
-    //retroune le tableau hand
-    public Card[] getCards() {
-=======
-    
 	//retroune le tableau hand
     public ArrayList<Card> getCards() {
->>>>>>> 63dc5d98f9291aa8e9182f9c1b8aa8da70272032
         return this.hand;
     }
 
@@ -38,14 +32,7 @@ public class Hand {
         }
         return sum;
     }
-<<<<<<< HEAD
-
-
-
-    // ajouter une carte au tableau
-=======
 	// ajouter une carte au tableau
->>>>>>> 63dc5d98f9291aa8e9182f9c1b8aa8da70272032
     public void addCard(Card card) {
 //      hand[i++] = new Card(card)
         hand.add(card);
