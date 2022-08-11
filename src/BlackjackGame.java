@@ -49,13 +49,12 @@ public class BlackjackGame {
     
 	//retourner le montant total que le joeur peut l'utiliser pour la mise.
     public double getMaxBet() {
-        //TODO devrais etre de meme
         if(totalMoney < maxBet){
             return totalMoney;
         }
         return maxBet;
     }
-    
+
 	// pour retrouner le montant total
     public double getTotalMoney() {
         return totalMoney;

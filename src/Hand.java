@@ -47,10 +47,7 @@ public class Hand {
         for (Card card: hand){
             sum += card.getPoints();
         }
-        if (sum == 21) {
-            return true;
-        }
-        return false;
+        return sum == 21;
     }
 
     // retourne true si la somme des points a une valeur supérieur a 21. False sinon.

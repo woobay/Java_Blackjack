@@ -61,29 +61,12 @@ public class BlackjackApp {
     private static String getHitOrStand() {
         String myArray[] = {"h", "s"};
         return Console.getString("Hit or Stand? (h/s): ", myArray);
-
     }
 
 	// affiche les cartes dans la main du courtier et les cartes dans la main du joueur
 	    private static void showHands() {
-            Card[] cardsDealer = game.getDealerHand().getCards().toArray(new Card[0]);
-            Card[] cardsPlayer = game.getPlayerHand().getCards().toArray(new Card[0]);
-
-            System.out.println("Player hand: ");
-            for(Card card: cardsPlayer) {
-                System.out.println(card.display());
-            }
-            System.out.printf("Total point: %s", game.getPlayerHand().getPoints());
-            System.out.println("Dealer hand: ");
-            System.out.println();
-            System.out.println();
-            for(Card card: cardsDealer) {
-                System.out.println(card.display());
-            }
-            System.out.printf("Total point: %s", game.getDealerHand().getPoints());
-            System.out.println();
-            System.out.println();
-
+            showPlayerHand();
+            showDealerHand();
         }
 
 	// affiche le message DEALER'S SHOW CARD et puis affiche le deuxieme carte dans la main du courtier
