@@ -26,7 +26,7 @@ public class BlackjackGame {
     
 	//retourne true le total d’argent dont un joueur dispose est inférieur au minimum de mise. False sinon.
     public boolean isOutOfMoney() {
-        return (totalMoney < 5);
+        return (totalMoney < minBet);
     }
 	// pour initialiser totalMoney a 100
     public void resetMoney() {
@@ -123,7 +123,8 @@ public class BlackjackGame {
 
 	//retourne true si le player gagne. False sinon.
     public boolean playerWins() {
-        return  ((!playerHand.isBust() && dealerHand.isBust())) || (!playerHand.isBust() && playerHand.getPoints() > dealerHand.getPoints());
+        return  ((!playerHand.isBust() && dealerHand.isBust())) || (!playerHand.isBust()
+                && playerHand.getPoints() > dealerHand.getPoints());
     }
 	// ajoute le montant du mise gagner au montant total
     public void addBetToTotal() {

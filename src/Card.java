@@ -34,6 +34,6 @@ public class Card {
     
 	//retourne une chaine de caractère : Valeur_rank_variable + " of " + valeur_suite_variable. Par exemple : 3 of Hearts 
     public String display() {
-        return this.rank + " of " + this.suite + "   " + this.points;
+        return this.rank + " of " + this.suite;
     }
 }

@@ -67,7 +67,7 @@ public class Console {
     public static double getDouble(String prompt, double min, double max) {
         while (true) {
             double value = getDouble(prompt);
-            if (value > min && value < max) {
+            if (value >= min && value <= max) {
                 return value;
             } else {
                 System.out.println("Error! Number must be greater than " 
