@@ -34,7 +34,6 @@ public class Hand {
     }
 	// ajouter une carte au tableau
     public void addCard(Card card) {
-//      hand[i++] = new Card(card)
         hand.add(card);
     }
 
