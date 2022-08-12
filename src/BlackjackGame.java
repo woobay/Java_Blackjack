@@ -35,11 +35,7 @@ public class BlackjackGame {
     
 	//retourne false si double localBetAmt est inférieur au minBet ou supérieur au maxBet ou supérieur au totalMoney. True sinon.
     public boolean isValidBet(double localBetAmt) {
-        if (localBetAmt < minBet || localBetAmt > maxBet) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(localBetAmt < minBet) && !(localBetAmt > maxBet);
     }
     
 	//retourner minBet
@@ -49,10 +45,7 @@ public class BlackjackGame {
     
 	//retourner le montant total que le joeur peut l'utiliser pour la mise.
     public double getMaxBet() {
-        if(totalMoney < maxBet){
-            return totalMoney;
-        }
-        return maxBet;
+        return Math.min(totalMoney, maxBet);
     }
 
 	// pour retrouner le montant total
@@ -106,12 +99,8 @@ public class BlackjackGame {
     
 	// ice cream
     public boolean isBlackjackOrBust() {
-        if(playerHand.isBlackjack() || playerHand.isBust() 
-                || dealerHand.isBlackjack() || dealerHand.isBust()) {
-            return true;
-        } else{
-            return false;
-        }
+        return playerHand.isBlackjack() || playerHand.isBust()
+                || dealerHand.isBlackjack() || dealerHand.isBust();
     }
     
 	//retourne true si les points dans la main de joueur est inférieur ou égale 21 et ces points sont égales aux points avec le courtier. False sinon.
