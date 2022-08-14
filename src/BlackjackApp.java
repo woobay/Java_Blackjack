@@ -26,7 +26,7 @@ public class BlackjackApp {
                 while (getHitOrStand().equals("h")) {
                     game.hit();
                     showPlayerHand();
-                    if (game.getPlayerHand().isBust()) {
+                    if (game.getPlayerHand().isBust() || game.getPlayerHand().getPoints() == 21) {
                         break;
                     }
                 }

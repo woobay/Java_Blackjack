@@ -76,7 +76,7 @@ public class BlackjackGame {
     
 	//qui ajoute des cartes au main du courtier tant que la somme des points dont il dispose est moins que 17.
     public void stand() {
-        while (dealerHand.getPoints() < 17) {
+        while (dealerHand.getPoints() < 17 || dealerHand.getPoints() < playerHand.getPoints()) {
             dealerHand.addCard(deck.drawCard());
         }
     }
